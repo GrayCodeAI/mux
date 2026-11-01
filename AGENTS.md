@@ -161,10 +161,12 @@ make ci                          # Full CI suite
 | Main test file | `provider/client_test.go` (httptest servers, provider detection) |
 | Linter config | `.golangci.yml` (govet, ineffassign, misspell — minimal) |
 
-This is an independent repository consumed by Reflect. In the local
-`graycode-eco` parent workspace it is checked out beside `reflect` as `../relay`
-and connected through the parent `go.work`; publish changes here, then update
-Reflect's module pin through a separate PR.
+Relay is an independent open-source GrayCodeAI project that any application can
+consume. Reflect is one host, with its own repository, build, version, and release.
+Relay does not depend on Reflect. Optional coordinated development uses a
+gitignored module overlay in the host; no parent `go.work` or sibling checkout
+is required. Publish Relay changes independently, then consumers update their
+module pins through their own release processes.
 
 ## Cloudflare
 

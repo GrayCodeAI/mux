@@ -30,13 +30,16 @@
 
 ## What is relay
 
-relay is the LLM provider runtime that powers the [reflect](https://github.com/GrayCodeAI/reflect) coding agent. It handles everything between your application and LLM APIs — authentication, model resolution, streaming, retries, rate limiting, and caching.
+Relay is an independent open-source LLM provider runtime from GrayCodeAI, built
+for any application that needs model access. It handles authentication, model
+resolution, streaming, retries, rate limiting, and caching.
 
 When your app calls a model, relay figures out which provider to use, how to talk to it, and how to stream the response back. Switch from Anthropic to Ollama? relay handles the translation. API returns 529? relay retries with backoff. Response hits `max_tokens`? relay continues automatically.
 
 **Your app never talks to an LLM API directly. relay does.**
 
-Reflect is the product face: it owns UX, agent orchestration, tools, permissions,
+The [Reflect](https://github.com/GrayCodeAI/reflect) coding agent is one consumer:
+it owns UX, agent orchestration, tools, permissions,
 sessions, and product semantics. Relay is the provider engine: it owns
 credentials, catalog and route resolution, provider transports, normalized
 streams, retry/fallback, usage, and provider telemetry. Reflect integrates through
@@ -45,7 +48,9 @@ provider packages.
 
 ## Ecosystem Boundaries
 
-relay is a Reflect support engine. Keep the dependency edge one-way.
+Relay and Reflect are independently usable, versioned, and released projects.
+Relay has no dependency on Reflect. Any host application can integrate through
+Relay's public API; agent behavior and product UX belong to that host.
 
 Hosts may import exactly four packages:
 
@@ -361,7 +366,7 @@ tool-call count, and deployment-routing state remain queryable.
 
 ## Ecosystem
 
-relay is part of the graycode-eco:
+GrayCodeAI maintains these independent open-source projects:
 
 | Component | Repository | Purpose |
 |---|---|---|
